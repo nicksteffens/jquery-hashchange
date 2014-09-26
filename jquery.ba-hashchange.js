@@ -13,8 +13,8 @@
 // 
 // Project Home - http://benalman.com/projects/jquery-hashchange-plugin/
 // GitHub       - http://github.com/cowboy/jquery-hashchange/
-// Source       - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.js
-// (Minified)   - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.min.js (0.8kb gzipped)
+// Source       - http://github.com/cowboy/jquery-hashchange/raw/master/$.ba-hashchange.js
+// (Minified)   - http://github.com/cowboy/jquery-hashchange/raw/master/$.ba-hashchange.min.js (0.8kb gzipped)
 // 
 // About: License
 // 
@@ -65,9 +65,9 @@
 //         techniques from http://www.paciellogroup.com/blog/?p=604. Added 
 //         support for the "shortcut" format $(window).hashchange( fn ) and
 //         $(window).hashchange() like jQuery provides for built-in events.
-//         Renamed jQuery.hashchangeDelay to <jQuery.fn.hashchange.delay> and
-//         lowered its default value to 50. Added <jQuery.fn.hashchange.domain>
-//         and <jQuery.fn.hashchange.src> properties plus document-domain.html
+//         Renamed $.hashchangeDelay to <$.fn.hashchange.delay> and
+//         lowered its default value to 50. Added <$.fn.hashchange.domain>
+//         and <$.fn.hashchange.src> properties plus document-domain.html
 //         file to address access denied issues when setting document.domain in
 //         IE6/7.
 // 1.2   - (2/11/2010) Fixed a bug where coming back to a page using this plugin
@@ -109,7 +109,7 @@
     return '#' + url.replace( /^[^#]*#?(.*)$/, '$1' );
   };
   
-  // Method: jQuery.fn.hashchange
+  // Method: $.fn.hashchange
   // 
   // Bind a handler to the window.onhashchange event or trigger all bound
   // window.onhashchange event handlers. This behavior is consistent with
@@ -139,12 +139,12 @@
     return fn ? this.bind( str_hashchange, fn ) : this.trigger( str_hashchange );
   };
   
-  // Property: jQuery.fn.hashchange.delay
+  // Property: $.fn.hashchange.delay
   // 
   // The numeric interval (in milliseconds) at which the <hashchange event>
   // polling loop executes. Defaults to 50.
   
-  // Property: jQuery.fn.hashchange.domain
+  // Property: $.fn.hashchange.domain
   // 
   // If you're setting document.domain in your JavaScript, and you want hash
   // history to work in IE6/7, not only must this property be set, but you must
@@ -152,19 +152,19 @@
   // property is only applicable if you are supporting IE6/7 (or IE8 operating
   // in "IE7 compatibility" mode).
   // 
-  // In addition, the <jQuery.fn.hashchange.src> property must be set to the
+  // In addition, the <$.fn.hashchange.src> property must be set to the
   // path of the included "document-domain.html" file, which can be renamed or
   // modified if necessary (note that the document.domain specified must be the
   // same in both your main JavaScript as well as in this file).
   // 
   // Usage:
   // 
-  // jQuery.fn.hashchange.domain = document.domain;
+  // $.fn.hashchange.domain = document.domain;
   
-  // Property: jQuery.fn.hashchange.src
+  // Property: $.fn.hashchange.src
   // 
   // If, for some reason, you need to specify an Iframe src file (for example,
-  // when setting document.domain as in <jQuery.fn.hashchange.domain>), you can
+  // when setting document.domain as in <$.fn.hashchange.domain>), you can
   // do so using this property. Note that when using this property, history
   // won't be recorded in IE6/7 until the Iframe src file loads. This property
   // is only applicable if you are supporting IE6/7 (or IE8 operating in "IE7
@@ -172,7 +172,7 @@
   // 
   // Usage:
   // 
-  // jQuery.fn.hashchange.src = 'path/to/file.html';
+  // $.fn.hashchange.src = 'path/to/file.html';
   
   $.fn[ str_hashchange ].delay = 50;
   /*
@@ -184,12 +184,12 @@
   // 
   // Fired when location.hash changes. In browsers that support it, the native
   // HTML5 window.onhashchange event is used, otherwise a polling loop is
-  // initialized, running every <jQuery.fn.hashchange.delay> milliseconds to
+  // initialized, running every <$.fn.hashchange.delay> milliseconds to
   // see if the hash has changed. In IE6/7 (and IE8 operating in "IE7
   // compatibility" mode), a hidden Iframe is created to allow the back button
   // and hash-based history to work.
   // 
-  // Usage as described in <jQuery.fn.hashchange>:
+  // Usage as described in <$.fn.hashchange>:
   // 
   // > // Bind an event handler.
   // > jQuery(window).hashchange( function(e) {
@@ -297,6 +297,12 @@
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
     // vvvvvvvvvvvvvvvvvvv REMOVE IF NOT SUPPORTING IE6/7/8 vvvvvvvvvvvvvvvvvvv
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    // adding browser test
+    $.browser = {};
+    $.browser.mozilla = /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase());
+    $.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+    $.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+    $.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
     $.browser.msie && !supports_onhashchange && (function(){
       // Not only do IE6/7 need the "magical" Iframe treatment, but so does IE8
       // when running in "IE7 compatibility" mode.
