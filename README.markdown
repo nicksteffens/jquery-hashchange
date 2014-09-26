@@ -1,7 +1,7 @@
 # jQuery hashchange event #
 [http://benalman.com/projects/jquery-hashchange-plugin/](http://benalman.com/projects/jquery-hashchange-plugin/)
 
-Version: 1.4, Last updated: 9/25/2014 [https://github.com/nicksteffens/jquery-hashchange/tree/v1.4](JQuery 2.1.1 Patch for $.browser support)
+Version: 1.4, Last updated: 9/25/2014 [JQuery 2.1.1 Patch](https://github.com/nicksteffens/jquery-hashchange/tree/v1.4)
 
 This jQuery plugin enables very basic bookmarkable #hash history via a cross-browser window.onhashchange event.
 

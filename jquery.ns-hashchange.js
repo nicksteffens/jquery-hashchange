@@ -1,5 +1,5 @@
 /*!
- * jQuery hashchange event - v1.3 - 7/21/2010
+ * jQuery hashchange event - v1.4 - 9/25/2014
  * http://benalman.com/projects/jquery-hashchange-plugin/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
